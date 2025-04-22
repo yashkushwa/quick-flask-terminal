@@ -1,0 +1,91 @@
+
+:root {
+    --bg-color: #1e1e1e;
+    --header-bg: #252526;
+    --text-color: #f0f0f0;
+    --button-bg: #3a3a3a;
+    --button-hover: #505050;
+    --border-color: #505050;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Menlo', 'Consolas', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-bg);
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-header h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+#terminal {
+    flex-grow: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.xterm {
+    padding: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .terminal-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    button {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}

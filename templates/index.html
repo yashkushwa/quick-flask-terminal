@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/xterm.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="terminal-header">
+            <h1>Flask Terminal</h1>
+            <div class="controls">
+                <button id="clearBtn" title="Clear Terminal">Clear</button>
+                <button id="resizeBtn" title="Fit Terminal">Fit</button>
+            </div>
+        </div>
+        <div id="terminal"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/xterm.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/xterm-addon-fit.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/xterm-addon-web-links.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/terminal.js') }}"></script>
+</body>
+</html>
