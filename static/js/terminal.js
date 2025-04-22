@@ -102,6 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('resizeBtn').addEventListener('click', fitTerminal);
     
+    // Focus terminal on click
+    document.getElementById('terminal').addEventListener('click', () => {
+        terminal.focus();
+    });
+    
+    // Auto-focus terminal on page load
+    setTimeout(() => {
+        terminal.focus();
+    }, 500);
+    
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => {
         socket.emit('destroy_terminal', {

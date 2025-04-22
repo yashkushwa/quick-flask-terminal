@@ -1,49 +1,36 @@
 
-:root {
-    --bg-color: #1e1e1e;
-    --header-bg: #252526;
-    --text-color: #f0f0f0;
-    --button-bg: #3a3a3a;
-    --button-hover: #505050;
-    --border-color: #505050;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Menlo', 'Consolas', monospace;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #121212;
+    color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    max-width: 100%;
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    width: 100%;
 }
 
 .terminal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--header-bg);
-    padding: 10px 20px;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
 }
 
 .terminal-header h1 {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .controls {
@@ -51,41 +38,54 @@ body {
     gap: 10px;
 }
 
-button {
-    background-color: var(--button-bg);
-    color: var(--text-color);
+.controls button {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
     border: none;
-    padding: 6px 12px;
     border-radius: 4px;
+    padding: 8px 12px;
     cursor: pointer;
-    font-size: 0.9rem;
     transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: var(--button-hover);
+.controls button:hover {
+    background-color: #3d3d3d;
 }
 
 #terminal {
-    flex-grow: 1;
-    padding: 10px;
+    flex: 1;
+    background-color: #1e1e1e;
+    border-radius: 6px;
     overflow: hidden;
+    min-height: 500px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .xterm {
-    padding: 5px;
+    padding: 10px;
+    height: 100%;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .terminal-header {
-        flex-direction: column;
-        gap: 10px;
+/* Make sure the terminal can receive focus */
+.xterm-viewport,
+.xterm-screen {
+    outline: none;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .container {
         padding: 10px;
     }
     
-    button {
-        padding: 5px 10px;
-        font-size: 0.8rem;
+    .terminal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    #terminal {
+        min-height: 300px;
     }
 }

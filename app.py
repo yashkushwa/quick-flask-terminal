@@ -16,7 +16,7 @@ from flask_cors import CORS
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
 # Store active terminals
 terminals = {}
@@ -109,6 +109,9 @@ def handle_create_terminal(data):
     # Start thread to read output
     Thread(target=read_terminal_output, args=(terminal_id,), daemon=True).start()
     
+    # Send an initial prompt
+    os.write(master_fd, b"\n")
+    
     return {'success': True, 'terminal_id': terminal_id}
 
 @socketio.on('resize_terminal')
@@ -132,6 +135,7 @@ def handle_terminal_input(data):
             os.write(terminals[terminal_id]["fd"], input_data.encode())
             return {'success': True}
         except Exception as e:
+            print(f"Error writing to terminal: {str(e)}")
             return {'success': False, 'error': str(e)}
     return {'success': False, 'error': 'Terminal not found'}
 
